@@ -11,7 +11,7 @@ class Queen:
 		self.neighbor = neighbor
 
 	def find_solution(self):
-		while self.neighbor != None and \
+		while self.neighbor is not None and \
 			self.neighbor._can_attack(self.row, self.column):
 			if not self._advance():
 				return False
@@ -21,7 +21,7 @@ class Queen:
 		if self.column < 8:
 			self.column += 1
 			return self.find_solution()
-		if self.neighbor != None:
+		if self.neighbor is not None:
 			if not self.neighbor._advance():
 				return False
 			if not self.neighbor.find_solution():
@@ -41,12 +41,12 @@ class Queen:
 		if self.column + row_difference == test_column or \
 			self.column - row_difference == test_column:
 			return True
-		if self.neighbor != None:
+		if self.neighbor is not None:
 			return self.neighbor._can_attack(test_row, test_column)
 		return False
 
 	def print(self):
-		if self.neighbor != None:
+		if self.neighbor is not None:
 			self.neighbor.print()
 		row = list('........')
 		row[self.column-1] = 'Q'
